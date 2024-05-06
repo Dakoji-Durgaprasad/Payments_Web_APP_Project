@@ -1,0 +1,237 @@
+@charset "ISO-8859-1";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    /* background-image: url('/Images/backgroundimage.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-size: large;*/
+    background-color: rgb(0, 0, 0);
+    color: #fff;
+}
+
+/* ------------------- Login & Register Page Styles ------------------------ */
+.a {
+    color: #fff;
+    text-decoration: none;
+    background-color: #0a78ab;
+    padding: 4px 8px;
+    border-radius: 10px;
+}
+
+.title {
+    background-color: #0a78ab;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+.container {
+    display: block;
+    justify-content: center;
+    text-align: center;
+    margin: 15% 10% 0;
+    color: #fff;
+}
+
+.regform {
+    margin: -5% -20%;
+}
+
+.loginInputs input,
+.registerInputs input {
+    margin: 20px;
+}
+
+.row {
+    display: flex;
+}
+
+.col {
+    flex: 50%;
+}
+
+input {
+    padding: 10px;
+    width: 70%;
+    border-style: inset;
+    border-radius: 8px;
+}
+
+.subtn {
+    border-color: #fff;
+    border-radius: 10px 20px;
+    width: 40%;
+    background-color: blue;
+    color: #fff;
+    cursor: pointer;
+}
+
+form {
+    margin: 0 30%;
+    border: 2px solid #0a78ab;
+    border-radius: 10px;
+}
+
+.passage {
+    font-size: small;
+    margin-bottom: 10px;
+}
+
+.container form {
+    margin: 0 20%;
+}
+
+/* ------------------- Dash Board Styles ------------------------ */
+/* .options h3 {
+    margin: 30px 20px;
+    padding: 20px;
+    background-color: #0a78ab;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.options h3 a {
+    color: #fff;
+    text-decoration: none;
+    padding: -20px;
+} */
+
+/* .title h1{
+	padding-bottom: 20px;
+}
+.title input{
+	width:30%;
+	border-radius:30px;
+	font-size:20px;
+	font-weight:500;
+}*/
+.dashboardtitle {
+    display: flex;
+}
+
+.dashboardtitle h1{
+    margin-left: 20px;
+}
+
+.dashboardtitle p {
+    margin: auto;
+    margin-left: 45%;
+}
+
+.dashboardtitle a {
+    text-decoration: none;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #0a78ab;
+    padding: 10px 20px;
+    font-size: large;
+    font-weight: 900;
+
+}
+
+.options {
+    margin: 10% 10% 0%;
+    border: 2px solid #0a78ab;
+    border-radius: 10px;
+}
+
+.options form {
+    margin: 0%;
+    border: none;
+}
+
+.options input {
+    margin: 30px 20px;
+    padding: 20px;
+    background-color: #0a78ab;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* -------------Primary Account Page Style---------------- */
+.primaryDetails {
+    margin: 10px;
+    padding: 20px;
+    background-color: #0a78ab;
+    border-radius: 10px;
+    border-color: #fff;
+}
+
+.primaryDetails h2,
+h3 {
+    padding: 4px;
+}
+
+/* --------- Bank Account details & Wallet Details---------- */
+
+.bankdetailsbox,
+.walletdetailsbox {
+    margin: 30px 20px;
+    padding: 20px;
+    background-color: #0a78ab;
+    border-radius: 8px;
+}
+
+/*.addnewbankacct a, .addMoneyToWallet a{
+    background-color: #fff;
+    color: #0a78ab;
+    text-decoration: none;
+    padding: 6px;
+    border-radius: 6px;
+}
+*/
+
+.addnewbankacct input,
+.addMoneyToWallet input {
+    background-color: #fff;
+    color: #0a78ab;
+    padding: 10px;
+    width: 50%;
+    border-radius: 6px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.addnewbankacct,
+.addMoneyToWallet {
+    margin: 10px;
+    padding: 20px;
+    background-color: #0a78ab;
+    border-radius: 10px;
+    border-color: #fff;
+}
+
+/* ------------------ Bank Account Form & Transaction Operation--------------------- */
+.bankform {
+    margin-top: 10% ;
+}
+
+.bankforminput input,
+select,
+.transForminput input {
+    margin: 20px;
+}
+
+#bankAcctType {
+    width: 70%;
+    height: 2.5rem;
+    border-style: inset;
+    border-radius: 8px;
+}
+    
+.bankforminput .subtn,
+.transForminput .subtn {
+    text-align: center;
+}
+
+/* --------------------------------- */
