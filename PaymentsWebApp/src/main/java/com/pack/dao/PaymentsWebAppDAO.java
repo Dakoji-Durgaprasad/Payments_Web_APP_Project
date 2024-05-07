@@ -81,10 +81,9 @@ public class PaymentsWebAppDAO {
 			ResultSet rs = st.executeQuery(loginValidateQuery);
 			while (rs.next()) {
 				System.out.println("Login Successfull !!");
+				return true;
 			}
 			con.close();
-			return true;
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
