@@ -116,16 +116,19 @@ form {
 .dashboardtitle {
     display: flex;
 }
-
+.dashboardtitle .main-title{
+	text-align: center;
+}
 .dashboardtitle h1{
     margin-left: 20px;
+    margin-bottom:-20px;
 }
 
 .dashboardtitle p {
-    margin: auto;
-    margin-left: 45%;
+    margin-left: 25%;  
 }
 
+/*
 .dashboardtitle a {
     text-decoration: none;
     border-radius: 8px;
@@ -134,6 +137,19 @@ form {
     padding: 10px 20px;
     font-size: large;
     font-weight: 900;
+
+}
+*/
+.dashboardtitle input {
+    margin: 10px 30px;
+    text-decoration: none;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #0a78ab;
+    padding: 10px 20px;
+    font-size: large;
+    font-weight: 900;
+    cursor: pointer;
 
 }
 
@@ -159,6 +175,12 @@ form {
 }
 
 /* -------------Primary Account Page Style---------------- */
+
+.container .primaryDetails{
+	diplay:flex;
+	text-align: left;
+	margin-top: 10%;
+}
 .primaryDetails {
     margin: 10px;
     padding: 20px;
