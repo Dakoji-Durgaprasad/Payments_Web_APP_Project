@@ -3,6 +3,7 @@ package com.pack.servs;
 import com.pack.dao.*;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,13 +28,13 @@ public class LoginServlet extends HttpServlet {
 		System.out.println(userNameOrPhoneNo);
 		System.out.println(password);
 
+		
 		PaymentsWebAppDAO dao = new PaymentsWebAppDAO();
 		try {
-			if (dao.loginValidate(userNameOrPhoneNo, password)) {
+			if(dao.loginValidate(userNameOrPhoneNo, password)) {
 				response.setContentType("text/html");
 				RequestDispatcher rd = request.getRequestDispatcher("dashboard.jsp");
 				rd.forward(request, response);
-
 			} else {
 				response.setContentType("text/html");  
 				response.getWriter().write("<p style='color:red;'> Login failed try again !!! <p>");
