@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
+
+<%@ page import="com.pack.dto.User"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,11 +10,30 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<div class="title dashboardtitle">
-		<h1>Welcome To The Payments Application</h1>
-        <p><a href="#">Profile</a></p>
+	<div class="title main-title">
+		<h1>Payments Web App</h1>
 	</div>
-	<div class="container options">
+	<div class="title dashboardtitle">
+		<% User u = new User();%>
+		<pre>
+		<h1>Welcome, <%out.print(request.getParameter("username"));%></h1>
+		</pre>
+		<p>
+            <form action="http://localhost:8080/PaymentsWebApp/index.html" method="">
+                <input type="submit" value="Logout">
+            </form>
+		</p>
+		
+	</div>
+	
+	<div class="container">
+		<div class="primaryDetails">
+			<h2>PRIMARY ACCOUNT NO : </h2>
+			<h3>ACCOUNT BALANCE : </h3>
+			<h3>WALLET BALANCE : </h3>	
+		</div>
+	</div>
+	<!-- <div class="container options">
 		<div class="row">
 			<div class="col">
 			
@@ -44,6 +65,6 @@
 				</form>
 			</div>
 		</div>
-	</div>
+	</div> -->
 </body>
 </html>
