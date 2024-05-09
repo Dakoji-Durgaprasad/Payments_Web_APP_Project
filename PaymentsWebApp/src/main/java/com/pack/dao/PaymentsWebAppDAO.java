@@ -90,6 +90,58 @@ public class PaymentsWebAppDAO {
 		return false;
 	}
 
+	public boolean isUserExistsWithPhNo(String userName, String phNum) {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/paymentsweb","root","root");
+			Statement st = con.createStatement();
+			String query = "select * from users u where (user.User_Name = '" + userName +"' && user.Phone_Number = '"+ phNum +"')";
+			System.out.println(query);
+			ResultSet rs= st.executeQuery(query);
+			if(rs.next()) {
+				return true;
+			}
+			con.close();
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		return false;
+		
+	}
+	public User getUserByUserNameOrUserPhNo(String userNameOrPhoneNo) {
+		
+		User user = new User();
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/payments_web_app", "root", "root");
+			Statement stmt = con.createStatement();
+			String query = "select * from User_info user where (user.User_Name = '" + userNameOrPhoneNo +"' || user.Phone_Number = '"+ userNameOrPhoneNo +"')";
+			System.out.println(query);
+			ResultSet rs= stmt.executeQuery(query);
+			if(rs.next()) {
+				int userId = rs.getInt("Id");
+				String fName = rs.getString("First_Name");
+				String lName = rs.getString("Last_Name");
+				String phNo = rs.getString("Phone_Number");
+				double currWABal = rs.getDouble("Wallet_Balance");
+				
+				user.setUserId(userId);
+				user.setFirstName(fName);
+				user.setLastName(lName);
+				user.setPhoneNumber(Long.parseLong(phNo));
+				user.setCurWalBalance(currWABal);
+				
+			}
+			con.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		return user;
+		
+	}
+
 	/*
 	 * ---------------------------------------------------- Viewing Data in the
 	 * DataBase---------------------------------------------------------------------
