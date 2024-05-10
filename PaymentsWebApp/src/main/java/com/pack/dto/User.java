@@ -7,12 +7,19 @@ public class User {
 	String firstName;
 	String lastName;
 	String email;
-	String phoneNumber;
+	long phoneNumber;
 	Date dateOfBirth;
 	String address;
 	String password;
-	
-	
+	double curWalBalance;
+	int userId;
+		
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
 	public String getUserName() {
 		return userName;
 	}
@@ -37,10 +44,10 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getPhoneNumber() {
+	public long getPhoneNumber() {
 		return phoneNumber;
 	}
-	public void setPhoneNumber(String phoneNumber) {
+	public void setPhoneNumber(long phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	public Date getDateOfBirth() {
@@ -61,6 +68,11 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+	public double getCurWalBalance() {
+		return curWalBalance;
+	}
+	public void setCurWalBalance(double curWalBalance) {
+		this.curWalBalance = curWalBalance;
+	}
 	
 }
