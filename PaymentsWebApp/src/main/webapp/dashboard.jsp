@@ -22,7 +22,7 @@
 		%>
 		<pre>
 		<h1>Welcome, <%out.print(request.getParameter("username"));%></h1> 
-		<!--  <h1>Welcome, <%=((User)request.getAttribute("user")).getLastName()%></h1> -->
+		<!--  <h1>Welcome, <%--((User)request.getAttribute("user")).getLastName()--%></h1> -->
 		</pre>
 		<p>
             <form action="index.jsp" method="">
@@ -46,20 +46,28 @@
 	</div>
 	
 	<div class="container bankdetailsbox">
-	  <% List<BankAccount> baList = (List<BankAccount>)request.getAttribute("baList"); %>
+	  <%-- List<BankAccount> baList = (List<BankAccount>)request.getAttribute("baList"); --%>
 		<table>
 			<tr>
-			<%
+			<%--
 				for(int i=0; i<baList.size();i++){
 					BankAccount ba = baList.get(i);
-			%>
+			--%>
 				<td>
 					BANK NAME :	<br>
 					BANK ACCOUNT NO : <br>
 					CURRENT BALANCE : <br>
 					IFSC CODE : <br>
 				</td>
-			<% 	}	%>
+			<%--	}	--%>
+			
+			<td>
+				<div  class="addnewbankacct primarybox">
+					<form action=" http://localhost:8080/PaymentsWebApp/bankacctform.jsp" method="" >
+                		<input type="submit" value="ADD NEW BANK ACCOUNT">
+            		</form>
+				</div>
+			</td>
 			</tr>
 		</table>
 	</div>
