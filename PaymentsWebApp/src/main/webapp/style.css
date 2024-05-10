@@ -181,7 +181,6 @@ form {
 .box1{
 	text-align: left;
 	/* margin-top: 20%; */
-   
     padding: 20px;
     background-color: #0a78ab;
     border-radius: 10px;
@@ -229,6 +228,13 @@ h3 {
 
 
 /* --------- Bank Account details & Wallet Details---------- */
+.container.bankdetailsbox{
+   margin: 3%;
+}
+.bankdetailsbox{
+	background-color:#0a78ab;
+	border-radius: 10px;
+}
 /*
 .bankdetailsbox,
 .walletdetailsbox {
