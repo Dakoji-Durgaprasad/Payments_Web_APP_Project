@@ -77,3 +77,11 @@ CREATE TABLE Txn_Details (
 );
 
 select * from Txn_Details;
+
+select * from INFORMATION_SCHEMA.key_column_usage
+where table_name ='Bank_Acct_Details';
+
+
+select * from  INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+where table_name ='BankAccounts'
+and column_name='userid';
