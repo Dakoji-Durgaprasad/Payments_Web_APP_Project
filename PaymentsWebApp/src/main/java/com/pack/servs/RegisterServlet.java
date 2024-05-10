@@ -38,7 +38,7 @@ public class RegisterServlet extends HttpServlet {
 		if (dao.isUserExistsWithPhNo(userName, phNo)) {
 			response.setContentType("text/html");
 			response.getWriter().write(
-					"<p style='color:red;'>User Already Exists. Tru with differnet username or phone number.</p>");
+					"<p style='color:red;'>User Already Exists. Try with differnet username or phone number.</p>");
 			RequestDispatcher rd = request.getRequestDispatcher("/register.jsp");
 			rd.include(request, response);
 		} else {
