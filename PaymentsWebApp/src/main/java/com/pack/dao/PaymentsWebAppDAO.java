@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.pack.dto.User;
+import com.pack.dto.BankAccount;
 
 public class PaymentsWebAppDAO {
 
@@ -41,28 +42,27 @@ public class PaymentsWebAppDAO {
 		}
 	}
 
-//	public static void storeUserBankDetails(String acctNum, String acctHolderName, String bankName, String acctIfscCode,
-//			String pin, String acctType, String userName, double bankBalance, String ph_num) {
-//
-//		try {
-//			Class.forName("com.mysql.cj.jdbc.Driver");
-//			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/payments_web_app", "root",
-//					"root");
-//			Statement st = con.createStatement();
-//			String storeUserBankDetailsQuery = "insert into Bank_acct_details(Acct_Num, Acct_Holder_Name, Bank_Name, Acct_IFSC_Code, Acct_Pin, Acct_Type, User_Name, BanK_Balance, Phone_Num)"
-//					+ "values('" + acctNum + "','" + acctHolderName + "', '" + bankName + "',  '" + acctIfscCode
-//					+ "', '" + pin + "', '" + acctType + "', '" + userName + "', '"+ bankBalance +"','" + ph_num + "')";
-//
-//			int rs = st.executeUpdate(storeUserBankDetailsQuery);
-//			System.out.println(rs + " row/s effected.\n");
-//
-//			con.close();
-//		} catch (ClassNotFoundException e) {
-//			e.printStackTrace();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
+	public static void storeUserBankDetails(BankAccount ba) {
+
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/payments_web_app", "root",
+					"root");
+			Statement st = con.createStatement();
+			String storeUserBankDetailsQuery = "insert into Bank_acct_details(Acct_Num, Acct_Holder_Name, Bank_Name, Acct_IFSC_Code, Acct_Pin, Acct_Type, User_Id, BanK_Balance, Phone_Num)"
+					+ "values('" + ba.getBankAcctNum() + "','" + ba.getBankAcctHolderName() + "', '" + ba.getBankName() + "',  '" + ba.getBankIfscCode()
+					+ "', '" + ba.getBankAcctPin() + "', '" + ba.getBankAcctType() + "', '" + ba.getUserId() + "', '"+ ba.getBankAcctCurBalance() +"','" + ba.getPhoneNumber() + "')";
+
+			int rs = st.executeUpdate(storeUserBankDetailsQuery);
+			System.out.println(rs + " row/s effected.\n");
+
+			con.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	/*
 	 * ---------------------------------------------------- Validating Data in the
