@@ -2,107 +2,111 @@
 	pageEncoding="ISO-8859-1"%>
 
 <%@ page import="com.pack.dto.User"%>
-<%@ page import="com.pack.dto.BankAccount" %>
-<%@ page import="java.util.List" %>
+<%@ page import="com.pack.dto.BankAccount"%>
+<%@ page import="java.util.List"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Dash Board</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
-	<div class="title main-title">
+	<%--	User sessionUser = (User)session.getAttribute("user");	--%>
+	<div class="dashboard-title nav-bar">
 		<h1>Payments Web App</h1>
-	</div>
-	<div class="title dashboardtitle">
-		<%
-			User sessionUser = (User)session.getAttribute("user");
-		%>
-		<pre>
-		<h1>Welcome, <%out.print(request.getParameter("username"));%></h1> 
-		<!--  <h1>Welcome, <%--((User)request.getAttribute("user")).getLastName()--%></h1> -->
-		</pre>
-		<p>
-            <form action="index.jsp" method="">
-                <input type="submit" value="Logout">
-            </form>
-		</p>
-		
-	</div>
-	
-	<div class="container box1">
-		<div class="primaryDetails primarybox">
-			<h2>PRIMARY ACCOUNT NO : </h2>
-			<h3>ACCOUNT BALANCE : </h3>
-			<h3>WALLET BALANCE : </h3>
-		</div>	
-		<div  class="addnewbankacct primarybox">
-			<form action="" method="" >
-                <input type="submit" value="SEND MONEY">
-            </form>
-		</div>
-	</div>
-	
-	<div class="container bankdetailsbox">
-	  <%-- List<BankAccount> baList = (List<BankAccount>)request.getAttribute("baList"); --%>
-		<table>
-			<tr>
-			<%--
-				for(int i=0; i<baList.size();i++){
-					BankAccount ba = baList.get(i);
-			--%>
-				<td>
-					BANK NAME :	<br>
-					BANK ACCOUNT NO : <br>
-					CURRENT BALANCE : <br>
-					IFSC CODE : <br>
-				</td>
-			<%--	}	--%>
-			
-			<td>
-				<div  class="addnewbankacct primarybox">
-					<form action=" http://localhost:8080/PaymentsWebApp/bankacctform.jsp" method="" >
-                		<input type="submit" value="ADD NEW BANK ACCOUNT">
-            		</form>
-				</div>
-			</td>
-			</tr>
-		</table>
-	</div>
-	<!-- <div class="container options">
-		<div class="row">
-			<div class="col">
-			
-				<form action="http://localhost:8080/PaymentsWebApp/PrimaryAcctServlet" method="">
-					<input type="submit" value="PRIMARY ACCOUNT AND BALANCE">
-				</form>
-				
-				<form action="http://localhost:8080/PaymentsWebApp/BankAcctDetailsServlet" method="">
-					<input type="submit" value="LIST OF BANK ACCOUNTS">
-				</form>
-				
-				
-				<form action="">
-					<input type="submit" value="REQUEST FOR STATEMENT">
-				</form>
-			</div>
-			<div class="col">
-				
-				<form action="http://localhost:8080/PaymentsWebApp/WalletBalanceServlet" method="">
-					<input type="submit" value="WALLET BALANCE">
-				</form>
-				
-				<form action="http://localhost:8080/PaymentsWebApp/TransactionOperationsServlet" method="">
-					<input type="submit" value="SEND MONEY">
-				</form>
-				
-				<form action="http://localhost:8080/PaymentsWebApp/index.html" method="">
-					<input type="submit" value="LOG OUT">
+		<div class="title-align">
+			<h2>
+				Welcome,
+				<%--=((User)request.getAttribute("user")).getFirstName()--%>
+				!
+			</h2>
+			<div class="logoutbtn">
+				<form action="" method="">
+					<input type="submit" value="Logout">
 				</form>
 			</div>
 		</div>
-	</div> -->
+	</div>
+	<!-- ---------------BOX - 1------------------ -->
+	<div class="box1">
+		<div class="primary-box">
+			<h2>Primary Bank Account No :</h2>
+			<h3>Account Balance :</h3>
+			<h3>Wallet Balance :</h3>
+		</div>
+		<div class="sendmoney-btn">
+			<form action="" method="">
+				<input type="submit" value="Send Money">
+			</form>
+		</div>
+	</div>
+	<!-- ---------------BOX - 2------------------ -->
+	<div class="box2">
+		<div class="table-data scrollmenu">
+			<% List<BankAccount> baList = (List<BankAccount>)request.getAttribute("baList"); %>
+			<table>
+				<tr>
+					<%
+                	for(int i=0;i<baList.size();i++){
+						BankAccount ba = baList.get(i);
+					%>
+					<td>
+						<p>
+							Bank Name :
+							<%=ba.getBankName() %></p>
+						<p>
+							Bank Account No :
+							<%=ba.getBankAcctNum()%></p>
+						<p>
+							Balance : <span onclick="showBal()" id="showbtn">Show</span>
+							<span id="bal"> <%=ba.getBankAcctCurBalance() %></span>
+						</p>
+						<p>
+							IFSC Code :
+							<%=ba.getBankIfscCode() %></p>
+						<div class="editOptions">
+							<form action="" method="">
+								<input type="submit" value="Edit">
+							</form>
+							<form action="" method="">
+								<input type="submit" value="Del">
+							</form>
+						</div>
+					</td>
+					<% } %>
+				</tr>
+			</table>
+		</div>
+		<div class="addbankacct">
+			<form action="http://localhost:8080/PaymentsWebApp/bankacctform.jsp" method="">
+				<input type="submit" value="Add New Bank Account">
+			</form>
+		</div>
+	</div>
+	<!-- ---------------BOX - 3------------------ -->
+	<div class="box3">
+		<div class="statmentbox">
+			<h2>Recent txns list</h2>
+			<p>1000 sent to ravi</p>
+			<p>2000 received from rao</p>
+			<p>.......</p>
+			<p>.......</p>
+			<p>.......</p>
+		</div>
+		<div class="detailedstmt">
+			<form action="" method="">
+				<input type="submit" value="Detailed Statement">
+			</form>
+		</div>
+	</div>
+
+	<script>
+        function showBal() {
+            document.getElementById('bal').style.display = 'inline';
+            document.getElementById('showbtn').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
