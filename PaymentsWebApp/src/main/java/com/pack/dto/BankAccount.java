@@ -2,15 +2,15 @@ package com.pack.dto;
 
 public class BankAccount {
 
-	int bankAcctId;
-	String bankAcctNum;
-	String bankAcctHolderName;
-	String bankName;
-	String bankIfscCode;
-	String bankAcctPin;
-	String bankAcctType;
-	double bankAcctCurBalance;
-	long phoneNumber;
+	private int bankAcctId;
+	private String bankAcctNum;
+	private String bankAcctHolderName;
+	private String bankName;
+	private String bankIfscCode;
+	private String bankAcctPin;
+	private String bankAcctType;
+	private double bankAcctCurBalance;
+	private long phoneNumber;
 	
 	int userId;
 	
