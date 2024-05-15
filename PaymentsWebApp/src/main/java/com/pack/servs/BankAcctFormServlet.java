@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.pack.dao.PaymentsWebAppDAO;
 import com.pack.dto.BankAccount;
+import com.pack.dto.User;
 
 @WebServlet("/BankAcctFormServlet")
 public class BankAcctFormServlet extends HttpServlet {
@@ -33,6 +34,9 @@ public class BankAcctFormServlet extends HttpServlet {
 		
 		
 		PaymentsWebAppDAO dao = new PaymentsWebAppDAO();
+//		User u = new User();
+//		int currUserId = u.getUserId();
+		
 		BankAccount ba = new BankAccount();
 		
 		ba.setBankAcctNum(accountNumber);
@@ -41,6 +45,7 @@ public class BankAcctFormServlet extends HttpServlet {
 		ba.setBankIfscCode(bankIFSCCode);
 		ba.setBankAcctType(bankAcctType);
 		ba.setBankAcctPin(bankAcctPin);
+//		ba.setUserId(currUserId);
 	
 		try {
 			dao.storeUserBankDetails(ba);
