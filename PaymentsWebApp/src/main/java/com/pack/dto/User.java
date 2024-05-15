@@ -3,22 +3,22 @@ package com.pack.dto;
 import java.util.Date;
 
 public class User {
-	String userName;
-	String firstName;
-	String lastName;
-	String email;
-	long phoneNumber;
-	Date dateOfBirth;
-	String address;
-	String password;
-	double curWalBalance;
-	int userId;
+	private String userName;
+	private String firstName;
+	private String lastName;
+	private String email;
+	private long phoneNumber;
+	private Date dateOfBirth;
+	private String address;
+	private String password;
+	private double curWalBalance;
+	private int userId;
 		
 	public int getUserId() {
 		return userId;
 	}
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public int setUserId(int userId) {
+		return this.userId = userId;
 	}
 	public String getUserName() {
 		return userName;
