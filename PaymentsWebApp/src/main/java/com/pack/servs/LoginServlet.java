@@ -4,6 +4,7 @@ import com.pack.dao.*;
 import com.pack.dto.*;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -44,6 +45,9 @@ public class LoginServlet extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("user", user);
 //				session.setAttribute("user", user.getFirstName());
+				
+				List<BankAccount> baList=  dao.getBADetailsByuserId(user.getUserId());
+				request.setAttribute("baList", baList);
 				
 				response.setContentType("text/html");
 				RequestDispatcher rd = request.getRequestDispatcher("/DashboardServlet");
