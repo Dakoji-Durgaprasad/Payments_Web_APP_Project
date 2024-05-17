@@ -13,13 +13,13 @@
 <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
-	<%--	User sessionUser = (User)session.getAttribute("user");	--%>
+	<%User sessionUser = (User)session.getAttribute("user");%>
 	<div class="dashboard-title nav-bar">
 		<h1>Payments Web App</h1>
 		<div class="title-align">
 			<h2>
-				Welcome,
-				<%--=((User)request.getAttribute("user")).getFirstName()--%>
+				 Welcome,
+				<%=((User)request.getAttribute("user")).getFirstName()%>
 				!
 			</h2>
 			<div class="logoutbtn">
@@ -37,7 +37,7 @@
 			<h3>Wallet Balance :</h3>
 		</div>
 		<div class="sendmoney-btn">
-			<form action="" method="">
+			<form action="http://localhost:8080/PaymentsWebApp/" method="">
 				<input type="submit" value="Send Money">
 			</form>
 		</div>
@@ -45,7 +45,7 @@
 	<!-- ---------------BOX - 2------------------ -->
 	<div class="box2">
 		<div class="table-data scrollmenu">
-			<% List<BankAccount> baList = (List<BankAccount>)request.getAttribute("baList"); %>
+			<% List<BankAccount> baList = (List<BankAccount>)request.getAttribute("baList");%>
 			<table>
 				<tr>
 					<%
