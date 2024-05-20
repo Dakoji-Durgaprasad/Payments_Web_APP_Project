@@ -1,6 +1,7 @@
 package com.pack.servs;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -62,16 +63,20 @@ public class BankAcctFormServlet extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
+			List<BankAccount> baList=  dao.getBADetailsByuserId(currUserId);
+			request.setAttribute("baList", baList);
+			
 			response.setContentType("text/html");
-//			response.getWriter().write("<p style='color:green;'>Account Added Successful!<p>");
+			response.getWriter().write("<p style='color:green;'>Account Added Successful!<p>");
 			RequestDispatcher rd = request.getRequestDispatcher("/dashboard.jsp");
 			rd.include(request, response);
 		} 
-//		else {
-//			response.setContentType("text/html");
-//			response.getWriter().write("<p style='color:red;'>Invalid Credentials</p>");
-//			RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
-//			rd.include(request, response);
-//		}
+		else {
+			response.setContentType("text/html");
+			response.getWriter().write("<p style='color:red;'>Invalid Credentials</p>");
+			RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+			rd.include(request, response);
+		}
 	}
 }
