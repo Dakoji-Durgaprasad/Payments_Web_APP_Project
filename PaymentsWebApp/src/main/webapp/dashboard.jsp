@@ -4,6 +4,7 @@
 <%@ page import="com.pack.dto.User"%>
 <%@ page import="com.pack.dto.BankAccount"%>
 <%@ page import="java.util.List"%>
+<%@ page import="javax.servlet.http.HttpSession"%>
 
 <!DOCTYPE html>
 <html>
@@ -13,17 +14,16 @@
 <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
-	<%User sessionUser = (User)session.getAttribute("user");%>
+	<%	session = request.getSession();
+	User sessionUser = (User)session.getAttribute("user");%>
 	<div class="dashboard-title nav-bar">
 		<h1>Payments Web App</h1>
 		<div class="title-align">
 			<h2>
-				 Welcome,
-				<%=((User)request.getAttribute("user")).getFirstName()%>
-				!
+				 Welcome, <%=sessionUser.getFirstName() %> !
 			</h2>
 			<div class="logoutbtn">
-				<form action="" method="">
+				<form action="http://localhost:8080/PaymentsWebApp/LogoutServlet" method="">
 					<input type="submit" value="Logout">
 				</form>
 			</div>
@@ -48,9 +48,8 @@
 			<% List<BankAccount> baList = (List<BankAccount>)request.getAttribute("baList");%>
 			<table>
 				<tr>
-					<%
-                	for(int i=0;i<baList.size();i++){
-						BankAccount ba = baList.get(i);
+					<%for(int i=0; i<baList.size(); i++){
+							BankAccount ba = baList.get(i);
 					%>
 					<td>
 						<p>
@@ -60,8 +59,9 @@
 							Bank Account No :
 							<%=ba.getBankAcctNum()%></p>
 						<p>
-							Balance : <span onclick="showBal()" id="showbtn">Show</span>
-							<span id="bal"> <%=ba.getBankAcctCurBalance() %></span>
+							Balance : 
+							<%-- <span onclick="showBal()" id="showbtn">Show</span>
+							<span id="bal">  --%> <%=ba.getBankAcctCurBalance() %> <%-- </span> --%>
 						</p>
 						<p>
 							IFSC Code :
@@ -75,7 +75,7 @@
 							</form>
 						</div>
 					</td>
-					<% } %>
+					<% 	} %>
 				</tr>
 			</table>
 		</div>
@@ -101,12 +101,15 @@
 			</form>
 		</div>
 	</div>
-
+	
+	<%-- 
 	<script>
         function showBal() {
             document.getElementById('bal').style.display = 'inline';
             document.getElementById('showbtn').style.display = 'none';
         }
     </script>
+    --%>
+    
 </body>
 </html>
