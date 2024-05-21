@@ -102,7 +102,7 @@ public class PaymentsWebAppDAO {
 	public boolean isUserExistsWithPhNo(String userName, String phNum) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/paymentsweb", "root", "root");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/payments_web_app", "root", "root");
 			Statement st = con.createStatement();
 			String query = "select * from users u where (user.User_Name = '" + userName + "' && user.Phone_Number = '"
 					+ phNum + "')";
@@ -119,6 +119,51 @@ public class PaymentsWebAppDAO {
 
 	}
 
+	public static boolean verifyUserWalletBalance(int userId, double txnAmount) throws SQLException {
+
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/payments_web_app", "root",
+					"root");
+			Statement st = con.createStatement();
+			String verifyUserWalletBalanceQuery = "SELECT Wallet_Balance FROM user_info WHERE Id = " + userId + " ";
+			ResultSet rs = st.executeQuery(verifyUserWalletBalanceQuery);
+			rs.next();
+			double walletBalance = rs.getDouble("Wallet_Balance");
+			if (txnAmount < walletBalance) {
+				return true;
+			}
+			con.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		return false;
+	}
+	
+	public static boolean verifyUserCurBankBalance(int userId, double txnAmount) throws SQLException {
+
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/payments_web_app", "root",
+					"root");
+			Statement st = con.createStatement();
+			String verifyUserCurBankBalanceQuery = "SELECT BanK_Balance FROM Bank_Acct_Details WHERE User_Id = " + userId
+					+ " ";
+			ResultSet rs = st.executeQuery(verifyUserCurBankBalanceQuery);
+			rs.next();
+			double bankBalance = rs.getDouble("BanK_Balance");
+			if (txnAmount < bankBalance) {
+				return true;
+			}
+			con.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		return false;
+	}
+	
 	/*
 	 * ---------------------------------------------------- Getting Data in the
 	 * DataBase---------------------------------------------------------------------
@@ -172,20 +217,20 @@ public class PaymentsWebAppDAO {
 					"root");
 			Statement stmt = con.createStatement();
 
-			String query = "select * from Bank_Acct_Details ba where ba.User_Id=" + userId;
+			String query = "select * from Bank_Acct_Details ba where ba.User_Id = " + userId;
 			System.out.println(query);
 			ResultSet rs = stmt.executeQuery(query);
 			while (rs.next()) {
 				BankAccount ba = new BankAccount();
 
-				String baName = rs.getString("BankName");
-				String baAcctNumber = rs.getString("BankAcctNo");
-				String currBaAcctBal = rs.getString("CurrBankAcctBalance");
-				String ifscCode = rs.getString("BankIFSCCode");
-				String acctType = rs.getString("AcctTypeId");
-//					String userId = rs.getString("UserId");
+				String baName = rs.getString("Bank_Name");
+				String baAcctNumber = rs.getString("Acct_Num");
+				String currBaAcctBal = rs.getString("BanK_Balance");
+				String ifscCode = rs.getString("Acct_IFSC_Code");
+				String acctType = rs.getString("Acct_Type");
+				int currUserId = rs.getInt("User_Id");
 
-				ba.setUserId(userId);
+				ba.setUserId(currUserId);
 				ba.setBankName(baName);
 				ba.setBankAcctNum(baAcctNumber);
 				ba.setBankAcctCurBalance(Double.parseDouble(currBaAcctBal));
@@ -200,6 +245,28 @@ public class PaymentsWebAppDAO {
 			return null;
 		}
 		return baList;
+
+	}
+	
+	/*
+	 * ---------------------------------------------------- Deleting And Updating Bank Account  
+	 * ---------------------------------------------------------------------
+	 * -
+	 */
+
+	public static void deleteUserBankAccount(int accNum) throws SQLException {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/payments_web_app", "root",
+					"root");
+			Statement st = con.createStatement();
+			String deleteUserBankAcctQuery = "DELETE FROM Bank_Acct_Details WHERE Acct_Num = "+ accNum+" ";
+			int rs = st.executeUpdate(deleteUserBankAcctQuery);
+			System.out.println(rs + " record deleted.\n");
+			con.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 
 	}
 
