@@ -46,7 +46,9 @@ body {
 }
 
 .loginInputs input,
-.registerInputs input {
+.registerInputs input,
+.sendmoneyInputs input,
+.delbankacctInputs input{
     margin: 20px;
 }
 
@@ -227,7 +229,7 @@ h3 {
 } */
 
 
-/* --------- Bank Account details & Wallet Details---------- */
+/* --------- Bank Account details & Wallet Details----------
 .container.bankdetailsbox{
    margin: 3%;
 }
@@ -235,7 +237,7 @@ h3 {
 	background-color:#0a78ab;
 	border-radius: 10px;
 }
-/*
+/* 
 .bankdetailsbox,
 .walletdetailsbox {
     margin: 30px 20px;
@@ -253,7 +255,7 @@ h3 {
 }
 */
 
-.addMoneyToWallet input {
+/* .addMoneyToWallet input {
     background-color: #fff;
     color: #0a78ab;
     padding: 10px;
@@ -269,7 +271,7 @@ h3 {
     background-color: #0a78ab;
     border-radius: 10px;
     border-color: #fff;
-}
+} */
 
 /* ------------------ Bank Account Form & Transaction Operation--------------------- */
 .bankform {
@@ -282,7 +284,7 @@ select,
     margin: 20px;
 }
 
-#bankAcctType {
+#bankAcctType,#txnFrom {
     width: 70%;
     height: 2.5rem;
     border-style: inset;
@@ -294,4 +296,18 @@ select,
     text-align: center;
 }
 
+.sendmoneyInputs table{
+    text-align: left;
+    margin-left: 10%;
+}
+
+.sendmoneyInputs table tr{
+    display: inline;
+    justify-content: space-around;
+    margin-left: 70px;
+}
+
+#enterusertosend, #enterbankaccttosend{
+    display: none;
+}
 /* --------------------------------- */
