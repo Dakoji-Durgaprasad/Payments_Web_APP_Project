@@ -62,6 +62,15 @@ p {
     justify-content: space-between;
 }
 
+.primary-box{
+	background-color: #fff;
+    border-radius: 8px;
+    color:  #000;
+    padding: 10px;
+    width: 520px;
+    height: 120px;
+}
+
 .primary-box h3 {
     margin: 3px;
 }
@@ -144,7 +153,10 @@ p {
     border: 1px solid black;
     border-radius: 10px;
     font-size: 15px;
-    padding: 2px 10px;
+    padding: 3px 40px;
+    background-color: #0a78ab;
+    color: #fff;
+     letter-spacing: 2px;
 }
 
 #bal {
