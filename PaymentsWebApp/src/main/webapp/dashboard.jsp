@@ -32,12 +32,19 @@
 	<!-- ---------------BOX - 1------------------ -->
 	<div class="box1">
 		<div class="primary-box">
-			<h2>Primary Bank Account No :</h2>
-			<h3>Account Balance :</h3>
-			<h3>Wallet Balance :</h3>
+		<% List<BankAccount> baList = (List<BankAccount>)request.getAttribute("baList");%>
+		<% for(int i=0; i<baList.size(); i++){
+				BankAccount ba = baList.get(0);
+		%>
+			<h2>Primary Bank Account No : <%= ba.getBankAcctNum() %></h2>
+			<h3>Account Balance : <span onclick="showBal()" id="showbtn">Show</span>
+							     <span id="bal"> <%= ba.getBankAcctCurBalance() %> </span> </h3>
+			<h3>Wallet Balance : <%= sessionUser.getCurWalBalance() %></h3>
+		<% break;
+			} %>
 		</div>
 		<div class="sendmoney-btn">
-			<form action="http://localhost:8080/PaymentsWebApp/" method="">
+			<form action="http://localhost:8080/PaymentsWebApp/sendmoney.jsp" method="">
 				<input type="submit" value="Send Money">
 			</form>
 		</div>
@@ -45,10 +52,11 @@
 	<!-- ---------------BOX - 2------------------ -->
 	<div class="box2">
 		<div class="table-data scrollmenu">
-			<% List<BankAccount> baList = (List<BankAccount>)request.getAttribute("baList");%>
+			<%-- List<BankAccount> baList = (List<BankAccount>)request.getAttribute("baList");--%>
 			<table>
 				<tr>
-					<%for(int i=0; i<baList.size(); i++){
+					<%
+						for(int i=0; i<baList.size(); i++){
 							BankAccount ba = baList.get(i);
 					%>
 					<td>
@@ -60,9 +68,7 @@
 							<%=ba.getBankAcctNum()%></p>
 						<p>
 							Balance : 
-							<%-- <span onclick="showBal()" id="showbtn">Show</span>
-							<span id="bal">  --%> <%=ba.getBankAcctCurBalance() %> <%-- </span> --%>
-						</p>
+							<%=ba.getBankAcctCurBalance() %> </p>
 						<p>
 							IFSC Code :
 							<%=ba.getBankIfscCode() %></p>
@@ -71,7 +77,7 @@
 								<input type="submit" value="Edit">
 							</form>
 							<form action="" method="">
-								<input type="submit" value="Del">
+								<input type="submit" value="Del" onclick="">
 							</form>
 						</div>
 					</td>
@@ -102,14 +108,15 @@
 		</div>
 	</div>
 	
-	<%-- 
+	
 	<script>
         function showBal() {
             document.getElementById('bal').style.display = 'inline';
             document.getElementById('showbtn').style.display = 'none';
         }
+        
     </script>
-    --%>
+  
     
 </body>
 </html>
