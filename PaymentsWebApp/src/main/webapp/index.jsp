@@ -31,7 +31,6 @@
 							here</a>
 					</p>
 				</div>
-
 			</form>
 		</div>
 	</div>
