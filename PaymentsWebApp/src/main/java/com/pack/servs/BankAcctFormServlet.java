@@ -32,6 +32,7 @@ public class BankAcctFormServlet extends HttpServlet {
 		String bankIFSCCode = request.getParameter("bankIfscCode");
 		String bankAcctType = request.getParameter("bankAcctType");
 		long phoneNumber = Long.parseLong(request.getParameter("ph_num"));
+		double bankBal = Double.parseDouble(request.getParameter("bankAcctBal"));
 		String bankAcctPin = request.getParameter("bankAcctPin");
 		String userName = request.getParameter("username");
 
@@ -53,6 +54,7 @@ public class BankAcctFormServlet extends HttpServlet {
 			ba.setBankAcctType(bankAcctType);
 			ba.setBankAcctPin(bankAcctPin);
 			ba.setPhoneNumber(phoneNumber);
+			ba.setBankAcctCurBalance(bankBal);
 			ba.setUserId(currUserId);
 
 			System.out.println(bankAcctType);
@@ -75,7 +77,7 @@ public class BankAcctFormServlet extends HttpServlet {
 		else {
 			response.setContentType("text/html");
 			response.getWriter().write("<p style='color:red;'>Invalid Credentials</p>");
-			RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/bankacctform.jsp");
 			rd.include(request, response);
 		}
 	}
